@@ -10,16 +10,19 @@ button {
      margin: auto;
      padding: 10px;
      border-radius: 10px;
+     width: 55%;
 }
 form {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    padding: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        padding: 20px;
+        width: 75%;
 }
 label {
     display: inline-block;
-    text-align: left;
+    text-align: center;
 }
 input {
     width: 100%;
@@ -35,15 +38,17 @@ input {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 10px;
-        padding: 25px;
-        width: 70%;
+        margin: 20px;
+        padding: 20px;
+        width: 100%;
     }
     label {
-
+        display: inline-block;
+        text-align: center;
+        width: 100%;
     }
     input {
-        
+        width: 100%;
         
     }
     button {
