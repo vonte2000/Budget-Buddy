@@ -12,9 +12,11 @@
         <h1>Budget Buddy</h1>
     </header>
     <div class="bar"></div>
-    <label>Total Budget</label>
-    <input class="budget-input">
+    
     <form class="categories">
+
+        <label>Total Budget</label>
+        <input class="budget-input">
         <label>Entertainment</label>
         <input type="number"><br>
         
@@ -28,6 +30,10 @@
         <input type="number"><br>
     
         <label>Remaining Budget</label>
+
+        <input type="text">
+        
+
         <div id="remaining-budget">Remaining Budget: $0</div>
 
     
@@ -35,7 +41,13 @@
             <button type="button" id="submit-btn">Submit</button>
             <button type="button" id="clear-btn">Clear</button>
         </div>
+
     </form>
+
+    <div class="btn-container">
+        <button type="button">Submit</button>
+        <button type="button">Clear</button>
+    </div>
 
     <script src="index.js"></script>
 </body>
