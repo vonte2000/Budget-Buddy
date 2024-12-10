@@ -20,7 +20,6 @@ const updateRemainingBudget = () => {
     const CalcTotalEntertainmentSpent = () => {
         const entertainmentSpent = categorySpent.entertainment
         totalEntertainmentSpent = totalEntertainmentSpent + entertainmentSpent
-        console.log(totalEntertainmentSpent)
     }
 
     const CalcTotalClothesSpent = () => {
