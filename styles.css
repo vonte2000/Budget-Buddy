@@ -28,6 +28,9 @@ input {
     width: 100%;
     display: inline-block;
 }
+.input-row {
+    display: flex;
+}
 @media only screen and (min-width: 768px) {
     header {
         display: flex;
@@ -51,6 +54,7 @@ input {
         width: 100%;
         
     }
+    
     button {
         width: 35%;
     }

@@ -14,27 +14,36 @@
     <div class="bar"></div>
     
     <form class="categories">
-        <label>Total Budget</label>
-        <input type="number" class="total-budget" placeholder="Enter your budget">
         
-        <label>Entertainment</label>
-        <input type="number" class="category entertainment" placeholder="Enter spending"><br>
+        <label>Total Budget <span id="total-amount"></span></label>
+        <input type="number" id="total" class="total-budget" placeholder="Enter your budget">
+        <div class="display"></div>
+
+        <label>Entertainment <span id="entertainment-amount"></span></label>
+        <input type="number" id="entertainment" class="category entertainment" placeholder="Enter spending">
+        <div class="display"></div>
+ 
+        <label>Clothes <span id="clothes-amount"></span></label>
+        <input type="number" id="clothes" class="category clothes" placeholder="Enter spending">
+        <div class="display"></div>
+  
+        <label>Bills <span id="bills-amount"></span></label>
+        <input type="number" id="bills" class="category bills" placeholder="Enter spending">
+        <div class="display"></div>
+       
+        <label>Food <span id="food-amount"></span></label>
+        <input type="number" id="food" class="category food" placeholder="Enter spending">
+        <div class="display"></div>
         
-        <label>Clothes</label>
-        <input type="number" class="category clothes" placeholder="Enter spending"><br>
 
-        <label>Bills</label>
-        <input type="number" class="category bills" placeholder="Enter spending"><br>
-
-        <label>Food</label>
-        <input type="number" class="category food" placeholder="Enter spending"><br>
-    
         <div class="remaining-budget">Remaining Budget: $0</div>
 
         <div class="btn-container">
+            <button id="save">Save</button>
             <button type="button" class="submit-btn">Submit</button>
             <button type="button" class="clear-btn">Clear</button>
             <button type="button" class="reset-btn">Reset</button>
+            
         </div>
     </form>
 
