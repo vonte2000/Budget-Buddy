@@ -16,29 +16,35 @@ const updateRemainingBudget = () => {
     const remainingBudget = totalBudget - totalSpent
     document.querySelector(".remaining-budget").innerText = `Remaining Budget: $${remainingBudget}`
 
-// running totals for the categories
-const CalcTotalEntertainmentSpent = () => {
-    totalEntertainmentSpent =
-    totalEntertainmentSpent + entertainmentSpent
-    entertainmentSpent = 0
-}
+    // running totals for the categories
+    const CalcTotalEntertainmentSpent = () => {
+        const entertainmentSpent = categorySpent.entertainment
+        totalEntertainmentSpent = totalEntertainmentSpent + entertainmentSpent
+        console.log(totalEntertainmentSpent)
+    }
 
-const CalcTotalClothesSpent = () => {
-    totalClothesSpent = totalClothesSpent + clothesSpent
-    clothesSpent = 0
-}
-const CalcTotalBillsSpent = () => {
-    totalBillsSpent = totalBillsSpent + billsSpent
-    billsSpent = 0
-}
-const CalcTotalFoodSpent = () => {
-    totalFoodSpent = totalFoodSpent + foodSpent
-    foodSpent = 0
-}
-//if over budget alert here
+    const CalcTotalClothesSpent = () => {
+        const clothesSpent = categorySpent.clothes
+        totalClothesSpent = totalClothesSpent + clothesSpent
+    }
+    const CalcTotalBillsSpent = () => {
+        const billsSpent = categorySpent.bills
+        totalBillsSpent = totalBillsSpent + billsSpent
+    }
+    const CalcTotalFoodSpent = () => {
+        const foodSpent = categorySpent.food
+        totalFoodSpent = totalFoodSpent + foodSpent
+    }
+    //if over budget alert here
     if (remainingBudget < 0) {
         alert("You are over budget!")
     }
+
+    //Call Total Calculators
+    CalcTotalEntertainmentSpent()
+    CalcTotalClothesSpent()
+    CalcTotalBillsSpent()
+    CalcTotalFoodSpent()
 }
 //clear and reset the inputs!
 const clearInputs = () => {
@@ -57,6 +63,10 @@ const updateSpending = () => {
         const value = input.value ? +input.value : 0 //+input converts the string to a number. if input has a number in it, the value will be the number in the input, else value is 0
         categorySpent[category] = value //assign the value to category, update the spending...
     })
+    //Sets catagory inputs to 0
+    document.querySelectorAll(".category").forEach(input => {
+        input.value = "0"
+    })
 
     updateRemainingBudget()
 }
@@ -68,6 +78,11 @@ document.querySelector(".clear-btn").addEventListener("click", clearInputs)
 
 document.querySelector(".reset-btn").addEventListener("click", () => {
     totalBudget = 0
+    //Resets Totals to 0
+    totalEntertainmentSpent = 0
+    totalClothesSpent = 0
+    totalBillsSpent = 0
+    totalFoodSpent = 0
     document.querySelector(".total-budget").value = ""
     clearInputs()
 })
