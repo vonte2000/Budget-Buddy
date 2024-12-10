@@ -37,7 +37,7 @@ const CalcTotalFoodSpent = () => {
 }
 //if over budget alert here
     if (remainingBudget < 0) {
-        alert("You are over budget!")
+        alert("You are over budget! :(")
     }
 }
 //clear and reset the inputs!
