@@ -61,11 +61,11 @@ const updateSpending = () => {
 }
 //event listeners for buttons!
 
-document.querySelector(".submit-btn").addEventListener("click", updateSpending)
+document.getElementById("submit").addEventListener("click", updateSpending)
 
-document.querySelector(".clear-btn").addEventListener("click", clearInputs)
+document.getElementById("clear").addEventListener("click", clearInputs)
 
-document.querySelector(".reset-btn").addEventListener("click", e => {
+document.getElementById("reset").addEventListener("click", e => {
     e.preventDefault()
     totalBudget = 0
     document.querySelector(".total-budget").value = ""
