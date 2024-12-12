@@ -1,57 +1,189 @@
 body {
+    font-family: Arial, sans-serif;
+    color: rgb(134, 105, 148);
+    margin: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    background-color: #f9fafc;
+    background-color: rgb(239, 233, 241);
+    overflow-x: hidden;
 }
+
 button {
-     background-color: #000;
-     color: #FFF;
-     margin: auto;
-     padding: 10px;
-     border-radius: 10px;
-     width: 55%;
+    background-color: #ead4f3;
+    color: rgb(115, 77, 133);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(115, 77, 133);
+    width: 55%;
+    transition: background-color 0.3s ease;
 }
+
+button:hover {
+    background-color: #c2a5d6;
+}
+
 form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 20px;
-        padding: 20px;
-        width: 75%;
-}
-label {
-    display: inline-block;
-    text-align: center;
-}
-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding: 5px;
     width: 100%;
-    display: inline-block;
+    max-width: 500px;
+    max-height: 100%;
+    background: linear-gradient(to right, #dfc6e9, #d3a7e6);
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+h1 {
+    margin: 20px 0;
+    color: rgb(115, 77, 133);
+    padding: 4px;
+    border-radius: 10px;
+    border: 2px solid rgb(174, 136, 190);
+    background: linear-gradient(to right, #a987b8, #8e44ad);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+label {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    color: rgb(115, 77, 133);
+    margin: 5px;
+    font-weight: bold;
+}
+
+input {
+    margin: 5px;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 1px solid rgb(115, 77, 133);
+    font-size: 1rem;
+    background-color: #e9d8f0;
+}
+
+.total-budget {
+    background: linear-gradient(to right, #f4eaf8, #d3a7e6);
+    margin-bottom: 20px;
+    border: 2px solid rgb(115, 77, 133);
+}
+
+.total-budget-label {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.remaining-budget {
+    font-size: 1.5em;
+    font-weight: bold;
+    background: linear-gradient(to right, #875ba7, #603d70);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin-bottom: 10px;
+}
+
+.remaining-budget-tracker {
+    font-size: 1.5em;
+    background: linear-gradient(to right, #b88cd8, #603d70);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+    font-weight: bold;
+    padding: 3px;
+}
+
 @media only screen and (min-width: 768px) {
-    header {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    body {
+        justify-content: flex-start;
+        text-align: left;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-bottom: 30px;
     }
+
+    h1 {
+        font-size: 2rem;
+        margin: 20px 0;
+        text-align: left;
+    }
+
     form {
-        display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        position: relative;
+        margin-top: 0;
         margin: 20px;
-        padding: 20px;
-        width: 100%;
+        padding: 10px;
+        width: 90%;
+        max-width: 90%;
+        height: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(to right, #dfc6e9, #d3a7e6);
+        border-radius: 10px;
+        display: flex;
     }
+
     label {
-        display: inline-block;
-        text-align: center;
         width: 100%;
+        font-size: 1rem;
+        color: rgb(115, 77, 133);
+        margin: 10px;
+        text-align: left;
     }
+
     input {
+        margin: 10px;
+        padding: 10px;
         width: 100%;
-        
+        max-width: 400px;
+        border-radius: 10px;
+        border: 1px solid rgb(115, 77, 133);
+        font-size: 1rem;
     }
+
+    .remaining-budget {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+      font-size: 2em;
+    }
+    .remaining-budget-tracker {
+        position: absolute;
+        top: 55px;
+        right: 10px;
+        text-align: right;
+        font-size: 2em;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
     button {
-        width: 35%;
+        width: 45%;
+        padding: 12px 20px;
+        margin-top: 20px;
+        font-size: 1.1rem;
     }
 }
