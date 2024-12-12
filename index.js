@@ -20,19 +20,23 @@ const updateRemainingBudget = () => {
     const CalcTotalEntertainmentSpent = () => {
         const entertainmentSpent = categorySpent.entertainment
         totalEntertainmentSpent = totalEntertainmentSpent + entertainmentSpent
+        document.querySelector(".entertainment-total").innerText = `Entertainment Total: $${totalEntertainmentSpent}`
     }
 
     const CalcTotalClothesSpent = () => {
         const clothesSpent = categorySpent.clothes
         totalClothesSpent = totalClothesSpent + clothesSpent
+        document.querySelector(".clothes-total").innerText = `Clothes Total: $${totalClothesSpent}`
     }
     const CalcTotalBillsSpent = () => {
         const billsSpent = categorySpent.bills
         totalBillsSpent = totalBillsSpent + billsSpent
+         document.querySelector(".bills-total").innerText = `Bills Total: $${totalBillsSpent}`
     }
     const CalcTotalFoodSpent = () => {
         const foodSpent = categorySpent.food
         totalFoodSpent = totalFoodSpent + foodSpent
+        document.querySelector(".food-total").innerText = `Food Total: $${totalFoodSpent}`
     }
     //if over budget alert here
     if (remainingBudget < 0) {
