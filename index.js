@@ -13,7 +13,7 @@ const updateRemainingBudget = e => {
     e.preventDefault()
     const totalSpent = Object.values(categorySpends).reduce((sum, value) => sum + value, 0)
     const remainingBudget = totalBudget - totalSpent
-    document.querySelector(".remaining-budget").innerText = `Remaining Budget: $${remainingBudget}`
+    document.getElementById(".remaining").innerText = `Remaining Budget: $${remainingBudget}`
 
     if (remainingBudget < 0) {
         alert("You are over budget!")
@@ -22,7 +22,7 @@ const updateRemainingBudget = e => {
 //clear and reset the inputs!
 const clearInputs = e => {
     e.preventDefault()
-    document.querySelectorAll(".category").forEach(input => {
+    document.getElementById("category").forEach(input => {
         input.value = ""
     })
     for (let category in categorySpent) {
@@ -51,7 +51,7 @@ saveButton.addEventListener("click", e => {
 
 //update the spending and the remaining budget...
 const updateSpending = () => {
-    document.querySelectorAll(".category").forEach(input => {
+    document.getElementById("category").forEach(input => {
         const category = input.classList[1] // the second class in the category
         const value = input.value ? +input.value : 0 //+input converts the string to a number. if input has a number in it, the value will be the number in the input, else value is 0
         categorySpent[category] = value //assign the value to category, update the spending...
@@ -68,11 +68,11 @@ document.getElementById("clear").addEventListener("click", clearInputs)
 document.getElementById("reset").addEventListener("click", e => {
     e.preventDefault()
     totalBudget = 0
-    document.querySelector(".total-budget").value = ""
+    document.getElementById("total").value = ""
     clearInputs()
 })
 //event listener for the input and total budget, convert the input from a string to a number
-document.querySelector(".total-budget").addEventListener("input", () => {
-    totalBudget = +document.querySelector(".total-budget").value //convert the input from string to a number, 
+document.getElementById("total").addEventListener("input", () => {
+    totalBudget = +document.getElementById("total").value //convert the input from string to a number, 
     updateRemainingBudget()
 })
