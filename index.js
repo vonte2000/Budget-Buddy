@@ -1,101 +1,112 @@
 let totalBudget = 0
+let resetting = false // Flag to suppress alerts during reset
 
 const categories = ["entertainment", "clothes", "bills", "food"]
 const categorySpent = {
-    "entertainment": 0,
-    "clothes": 0, 
-    "bills": 0, 
-    "food": 0
+    entertainment: 0,
+    clothes: 0,
+    bills: 0,
+    food: 0
 }
 
-//Update the remaining budget
+// Function to open the modal
+const openModal = () => {
+    const modal = document.getElementById("modal")
+    modal.style.display = "flex" // Show the modal
+}
+
+// Function to close the modal
+const closeModal = () => {
+    const modal = document.getElementById("modal")
+    modal.style.display = "none" // Hide the modal
+}
+
+// Attach event listener to the close button
+document.getElementById("close-modal").addEventListener("click", closeModal)
+
+// Update the remaining budget
 const updateRemainingBudget = () => {
-    
     const totalSpent = Object.values(categorySpent).reduce((sum, value) => sum + value, 0)
     const remainingBudget = totalBudget - totalSpent
     document.getElementById("remaining").innerText = `Remaining Budget: $${remainingBudget}`
 
-
-
-    const trackerDiv = document.querySelector(".remaining-budget-tracker");
+    const trackerDiv = document.querySelector(".remaining-budget-tracker")
     if (totalBudget > 0) {
-        const percentage = remainingBudget / totalBudget;
-        const totalCharas = 10; // give the total max number of characters that track remaining budget
-        const charaCount = Math.max(0, Math.floor(percentage * totalCharas));
-        trackerDiv.innerText = "$".repeat(charaCount);
+        const percentage = remainingBudget / totalBudget
+        const totalCharas = 10 // max number of characters to track remaining budget
+        const charaCount = Math.max(0, Math.floor(percentage * totalCharas))
+        trackerDiv.innerText = "$".repeat(charaCount)
     } else {
-        trackerDiv.innerText = ""; // clear so no tracking characters if no number
+        trackerDiv.innerText = "" // clear tracker if no budget
     }
 
-//if over budget alert here ... change to modal box?
-
-    if (remainingBudget < 0) {
-        alert("You are over budget! :(")
+    // Open modal if over budget
+    if (!resetting && remainingBudget < 0) {
+        openModal()
     }
 }
-//clear and reset the inputs!
+
+// Clear the category inputs and spans
 const clearInputs = () => {
     document.querySelectorAll(".category").forEach(input => {
-        input.value = ""
+        input.value = "" // Clear input fields
     })
-    for (let category in categorySpent) {
+
+    // Clear the spans showing category amounts
+    for (const category of categories) {
+        const span = document.getElementById(`${category}-amount`)
+        span.innerText = "" // Clear the span text
+    }
+
+    // Reset categorySpent and update the remaining budget
+    for (const category in categorySpent) {
         categorySpent[category] = 0
     }
     updateRemainingBudget()
 }
+
+// Reset the inputs and remaining budget
 const resetInputs = () => {
     for (const inputId of categories) {
         const span = document.getElementById(inputId + "-amount")
-        span.innerText = "";
+        span.innerText = "" // Clear category spans
     }
-    clearInputs()
+    clearInputs() // Clear input fields
 }
-//save and display budget inputs:
-const userInput = document.getElementById("userInput");
-const saveButton = document.getElementById("save");
-const displayArea = document.getElementById("display");
+
+// Save and display budget inputs
+const saveButton = document.getElementById("save")
 saveButton.addEventListener("click", e => {
     e.preventDefault()
     for (const inputId of categories) {
-        console.log(inputId);
-        console.log(categories);
         const input = document.getElementById(inputId)
         const span = document.getElementById(inputId + "-amount")
-        console.log(input);
-        console.log(span);
         if (input.value !== "") {
-            categorySpent[inputId] += +input.value
-            span.innerText = "$" + categorySpent[inputId]
+            categorySpent[inputId] += +input.value // Add to categorySpent
+            span.innerText = "$" + categorySpent[inputId] // Update the span
         }
-        input.value = ""
+        input.value = "" // Clear the input field
     }
-
-});
-
-
-//update the spending and the remaining budget...
-const updateSpending = () => {
-    document.getElementById("category").forEach(input => {
-        const category = input.classList[1] // the second class in the category
-        const value = input.value ? +input.value : 0 //+input converts the string to a number. if input has a number in it, the value will be the number in the input, else value is 0
-        categorySpent[category] = value //assign the value to category, update the spending...
-    })
-
     updateRemainingBudget()
-}
-//event listeners for buttons!
+})
 
-document.getElementById("submit").addEventListener("click", updateSpending)
-
+// Event listeners for buttons
 document.getElementById("clear").addEventListener("click", clearInputs)
 
 document.getElementById("reset").addEventListener("click", () => {
+    resetting = true // Start resetting
     totalBudget = 0
     document.getElementById("total").value = ""
+    for (const category in categorySpent) {
+        categorySpent[category] = 0 // Reset all category spending
+    }
     resetInputs()
+    updateRemainingBudget()
+    resetting = false // End resetting
 })
-//event listener for the input and total budget, convert the input from a string to a number
+
+// Update total budget and remaining budget on input
 document.getElementById("total").addEventListener("input", () => {
-    totalBudget = +document.getElementById("total").value //convert the input from string to a number, 
+    totalBudget = +document.getElementById("total").value // Convert input to a number
     updateRemainingBudget()
 })
