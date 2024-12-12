@@ -26,25 +26,6 @@ const updateRemainingBudget = () => {
         trackerDiv.innerText = ""; // clear so no tracking characters if no number
     }
 
-// running totals for the categories
-const CalcTotalEntertainmentSpent = () => {
-    totalEntertainmentSpent =
-    totalEntertainmentSpent + entertainmentSpent
-    entertainmentSpent = 0
-}
-
-const CalcTotalClothesSpent = () => {
-    totalClothesSpent = totalClothesSpent + clothesSpent
-    clothesSpent = 0
-}
-const CalcTotalBillsSpent = () => {
-    totalBillsSpent = totalBillsSpent + billsSpent
-    billsSpent = 0
-}
-const CalcTotalFoodSpent = () => {
-    totalFoodSpent = totalFoodSpent + foodSpent
-    foodSpent = 0
-}
 //if over budget alert here ... change to modal box?
     if (remainingBudget < 0) {
         alert("You are over budget! :(")
