@@ -16,6 +16,16 @@ const updateRemainingBudget = () => {
     const remainingBudget = totalBudget - totalSpent
     document.querySelector(".remaining-budget").innerText = `Remaining Budget: $${remainingBudget}`
 
+    const trackerDiv = document.querySelector(".remaining-budget-tracker");
+    if (totalBudget > 0) {
+        const percentage = remainingBudget / totalBudget;
+        const totalCharas = 10; // give the total max number of characters that track remaining budget
+        const charaCount = Math.max(0, Math.floor(percentage * totalCharas));
+        trackerDiv.innerText = "$".repeat(charaCount);
+    } else {
+        trackerDiv.innerText = ""; // clear so no tracking characters if no number
+    }
+
 // running totals for the categories
 const CalcTotalEntertainmentSpent = () => {
     totalEntertainmentSpent =
@@ -35,7 +45,7 @@ const CalcTotalFoodSpent = () => {
     totalFoodSpent = totalFoodSpent + foodSpent
     foodSpent = 0
 }
-//if over budget alert here
+//if over budget alert here ... change to modal box?
     if (remainingBudget < 0) {
         alert("You are over budget! :(")
     }
