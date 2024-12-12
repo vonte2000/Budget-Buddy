@@ -15,8 +15,22 @@ const updateRemainingBudget = () => {
     const remainingBudget = totalBudget - totalSpent
     document.getElementById("remaining").innerText = `Remaining Budget: $${remainingBudget}`
 
+
+
+    const trackerDiv = document.querySelector(".remaining-budget-tracker");
+    if (totalBudget > 0) {
+        const percentage = remainingBudget / totalBudget;
+        const totalCharas = 10; // give the total max number of characters that track remaining budget
+        const charaCount = Math.max(0, Math.floor(percentage * totalCharas));
+        trackerDiv.innerText = "$".repeat(charaCount);
+    } else {
+        trackerDiv.innerText = ""; // clear so no tracking characters if no number
+    }
+
+//if over budget alert here ... change to modal box?
+
     if (remainingBudget < 0) {
-        alert("You are over budget!")
+        alert("You are over budget! :(")
     }
 }
 //clear and reset the inputs!
