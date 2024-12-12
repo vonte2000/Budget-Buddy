@@ -44,6 +44,11 @@ form {
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+<<<<<<< HEAD
+.input-row {
+    display: flex;
+}
+=======
 
 h1 {
     margin: 20px 0;
@@ -110,6 +115,7 @@ input {
     padding: 3px;
 }
 
+>>>>>>> main
 @media only screen and (min-width: 768px) {
     body {
         justify-content: flex-start;
@@ -158,6 +164,9 @@ input {
         border: 1px solid rgb(115, 77, 133);
         font-size: 1rem;
     }
+<<<<<<< HEAD
+    
+=======
 
     .remaining-budget {
       position: absolute;
@@ -180,6 +189,7 @@ input {
         width: 100%;
     }
 
+>>>>>>> main
     button {
         width: 45%;
         padding: 12px 20px;
